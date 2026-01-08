@@ -165,3 +165,46 @@ html, body {
   35%  { opacity: 1; }
   100% { opacity: 0; }
 }
+
+/* ===============================
+   CALM CONTINUOUS CIRCULAR WAVES
+   =============================== */
+
+.intro-page {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Continuous ripple layer */
+.intro-ripples {
+  position: absolute;
+  inset: -50%;
+  z-index: 0;
+  pointer-events: none;
+
+  background: repeating-radial-gradient(
+    circle at center,
+    rgba(163, 163, 163, 0.12) 0px,
+    rgba(163, 163, 163, 0.12) 1px,
+    transparent 5px,
+    transparent 500px
+  );
+
+  animation: rippleExpand 30s linear infinite;
+}
+
+/* Very slow expansion */
+@keyframes rippleExpand {
+  from {
+    transform: scale(0.6);
+  }
+  to {
+    transform: scale(1.4);
+  }
+}
+
+/* Keep content above waves */
+.intro-content {
+  position: relative;
+  z-index: 1;
+}
