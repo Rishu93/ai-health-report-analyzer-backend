@@ -57,13 +57,28 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.append("file", fileInput.files[0]);
 
       try {
-        const response = await fetch("http://127.0.0.1:8000/analyze", {
+        const response = await fetch("http://127.0.0.1:8000/analyze-report", {
           method: "POST",
           body: formData
         });
 
         const data = await response.json();
-        resultBox.innerText = JSON.stringify(data, null, 2);
+        let html = `<h3>📄 Report: ${data.filename}</h3><hr/>`;
+
+for (const key in data.analysis) {
+  const value = data.analysis[key];
+  const status = value.toLowerCase().includes("low") || value.toLowerCase().includes("high")
+    ? "⚠️"
+    : "✅";
+
+  html += `<p><b>${key}</b>: ${value} ${status}</p>`;
+}
+
+html += `<hr/><h4>🧠 AI Extract (Preview)</h4>`;
+html += `<p style="font-size:13px; white-space:pre-wrap;">${data.text_preview}</p>`;
+
+resultBox.innerHTML = html;
+
 
       } catch (err) {
         console.error(err);
