@@ -1,56 +1,75 @@
-function analyseData() {
-  const fileInput = document.getElementById("fileUpload");
-  const resultBox = document.getElementById("result");
-
-  if (fileInput.files.length === 0) {
-    resultBox.innerHTML = "⚠️ Please upload a file first.";
-    return;
-  }
-
-  resultBox.innerHTML = "⏳ Analysing data using AI...";
-
-  // Backend API call (example)
-  fetch("http://127.0.0.1:5000/analyse", {
-    method: "POST",
-    body: new FormData().append("file", fileInput.files[0])
-  })
-  .then(response => response.json())
-  .then(data => {
-    resultBox.innerHTML = `✅ Result: ${data.result}`;
-  })
-  .catch(() => {
-    resultBox.innerHTML = "Backend not connected (demo mode)";
-  });
-}
-
 document.addEventListener("DOMContentLoaded", function () {
 
+  // ===== ELEMENTS =====
   const introPage = document.getElementById("introPage");
   const appPage = document.getElementById("appPage");
   const startBtn = document.getElementById("startBtn");
+  const cover = document.getElementById("transitionCover");
 
-  startBtn.addEventListener("click", function () {
+  const analyseBtn = document.getElementById("analyseBtn");
+  const fileInput = document.getElementById("fileUpload");
+  const fileName = document.getElementById("fileName");
+  const resultBox = document.querySelector(".result-box");
 
-    // Fade out intro
-    introPage.classList.add("fade-out");
+  console.log("startBtn:", startBtn);
+  console.log("introPage:", introPage);
+  console.log("appPage:", appPage);
+  console.log("transitionCover:", cover);
 
-    setTimeout(function () {
-      introPage.style.display = "none";
+  // ===== GET STARTED =====
+  if (startBtn && introPage && appPage) {
+    startBtn.addEventListener("click", function () {
+      console.log("Get Started clicked");
 
-      // Show app + fade in
-      appPage.style.display = "flex";
-      appPage.classList.add("fade-in");
+      if (cover) cover.classList.add("active");
 
-    }, 400); // must match fadeOut duration
-  });
+      introPage.classList.add("fade-out");
 
-});
+      setTimeout(() => {
+        introPage.style.display = "none";
+        appPage.style.display = "flex";
+        appPage.classList.add("fade-in");
+      }, 400);
+    });
+  }
 
-const fileInput = document.getElementById("fileUpload");
-const fileName = document.getElementById("fileName");
+  // ===== FILE NAME UPDATE =====
+  if (fileInput && fileName) {
+    fileInput.addEventListener("change", function () {
+      fileName.textContent = this.files.length
+        ? this.files[0].name
+        : "No file selected";
+    });
+  }
 
-fileInput.addEventListener("change", function () {
-  fileName.textContent = this.files.length
-    ? this.files[0].name
-    : "No file selected";
+  // ===== ANALYSE BUTTON =====
+  if (analyseBtn) {
+    analyseBtn.addEventListener("click", async function () {
+
+      if (!fileInput.files.length) {
+        alert("Please upload a file first");
+        return;
+      }
+
+      resultBox.innerText = "Analyzing report...";
+
+      const formData = new FormData();
+      formData.append("file", fileInput.files[0]);
+
+      try {
+        const response = await fetch("http://127.0.0.1:8000/analyze", {
+          method: "POST",
+          body: formData
+        });
+
+        const data = await response.json();
+        resultBox.innerText = JSON.stringify(data, null, 2);
+
+      } catch (err) {
+        console.error(err);
+        resultBox.innerText = "❌ Backend not reachable";
+      }
+    });
+  }
+
 });
