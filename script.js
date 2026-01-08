@@ -46,3 +46,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+const fileInput = document.getElementById("fileUpload");
+const fileName = document.getElementById("fileName");
+
+fileInput.addEventListener("change", function () {
+  fileName.textContent = this.files.length
+    ? this.files[0].name
+    : "No file selected";
+});

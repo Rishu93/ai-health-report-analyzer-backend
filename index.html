@@ -27,12 +27,16 @@
 
     <main class="main-content">
       <div class="card">
-        <h1>AI Health Report</h1>
+       <h1 class="card-title"><span>AI Health Report</span></h1>
 
         <div class="upload-section">
-          <label for="fileUpload">Upload Health File</label><br />
+        <label class="file-upload">
           <input type="file" id="fileUpload" />
+          <span class="file-btn">Upload Health File</span>
+          <span class="file-name" id="fileName">No file selected</span>
+          </label>
         </div>
+
 
         <button>Analyse with AI</button>
 

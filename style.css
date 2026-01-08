@@ -64,7 +64,7 @@ html, body {
   width: 100vw;
   height: 100vh;
   display: flex;
-  background: #eef5f7;
+  background: #cbcecf;
 }
 
 /* ===============================
@@ -91,11 +91,11 @@ html, body {
    CARD
    =============================== */
 .card {
-  background: white;
+  background: #a5a6a6;
   padding: 30px;
   border-radius: 12px;
   width: 380px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
 .card button {
@@ -105,7 +105,7 @@ html, body {
   background: #173a47;
   color: rgb(215, 215, 215);
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -119,8 +119,9 @@ html, body {
 .result-box {
   margin-top: 15px;
   padding: 12px;
-  background: #cfcbcb;
+  background: #c4c7c9;
   border-left: 4px solid #173a47;
+  border-radius: 10px;
 }
 
 /* ===============================
@@ -208,3 +209,63 @@ html, body {
   position: relative;
   z-index: 1;
 }
+
+/* ===================
+   CUSTOM FILE UPLOAD 
+   =================== */
+
+.upload-section {
+  margin-bottom: 20px;
+}
+
+/* Hide default input */
+.file-upload input[type="file"] {
+  display: none;
+}
+
+/* Container */
+.file-upload {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+/* Button */
+.file-btn {
+  padding: 10px 16px;
+  background: #173A47;
+  color: #ced5d7;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.file-upload:hover .file-btn {
+  background: #e2eaee;
+}
+
+/* File name */
+.file-name {
+  font-size: 0.85rem;
+  color: rgb(43, 45, 47);
+}
+
+/* TITLE TEXT INSIDE THE CARD */
+.card-title {
+  margin: 0 0 20px 0;
+}
+
+.card-title span {
+  display: block;
+  width: 100%;
+  background: #C4C7C9;
+  padding: 10px 0;
+  border-radius: 12px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #3d4853;
+  text-align: center;
+}
+
