@@ -7,30 +7,40 @@
 </head>
 <body>
 
-  <div class="app-container">
-    <!-- Sidebar -->
+  <!-- INTRO PAGE -->
+  <section id="introPage" class="intro-page">
+    <div class="intro-content">
+      <h1>🧠 AI Health Scanner</h1>
+      <p>Upload your medical reports and get AI-powered insights instantly.</p>
+      <button id="startBtn">Get Started</button>
+    </div>
+  </section>
+
+  <!-- MAIN APP -->
+  <div id="appPage" class="app-container hidden">
+
     <aside class="sidebar">
       <h2>🧠 HealthAI</h2>
       <p>Smart AI Health Analysis</p>
     </aside>
 
-    <!-- Main Content -->
     <main class="main-content">
       <div class="card">
         <h1>AI Health Report</h1>
 
         <div class="upload-section">
-          <label for="fileUpload">Upload Health File</label>
+          <label for="fileUpload">Upload Health File</label><br />
           <input type="file" id="fileUpload" />
         </div>
 
-        <button onclick="analyseData()">Analyse with AI</button>
+        <button>Analyse with AI</button>
 
-        <div class="result-box" id="result">
+        <div class="result-box">
           <p>Result will appear here...</p>
         </div>
       </div>
     </main>
+
   </div>
 
   <script src="script.js"></script>

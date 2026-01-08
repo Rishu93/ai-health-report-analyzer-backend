@@ -1,38 +1,85 @@
-* {
+html, body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: #d2d8dd; /* fallback to avoid white flash */
 }
 
-body {
-  background: #eef6f9;
+/* ===============================
+   UTILITIES
+   =============================== */
+.hidden {
+  display: none;
 }
 
-/* Layout */
-.app-container {
-  display: flex;
+/* ===============================
+   INTRO PAGE
+   =============================== */
+.intro-page {
+  width: 100vw;
   height: 100vh;
+  background: #121212;
+  color: rgb(214, 214, 214);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Sidebar */
+.intro-content {
+  text-align: center;
+  max-width: 450px;
+}
+
+.intro-content h1 {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+}
+
+.intro-content p {
+  font-size: 1.1rem;
+  opacity: 0.85;
+  margin-bottom: 30px;
+}
+
+.intro-content button {
+  padding: 12px 26px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.intro-content button:hover {
+  background: #43a047;
+}
+
+/* ===============================
+   APP LAYOUT
+   =============================== */
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background: #eef5f7;
+}
+
+/* ===============================
+   SIDEBAR
+   =============================== */
 .sidebar {
   width: 260px;
-  background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
+  background: #173a47;
   color: white;
-  padding: 40px 20px;
+  padding: 30px 20px;
 }
 
-.sidebar h2 {
-  font-size: 28px;
-  margin-bottom: 10px;
-}
-
-.sidebar p {
-  opacity: 0.8;
-}
-
-/* Main */
+/* ===============================
+   MAIN CONTENT
+   =============================== */
 .main-content {
   flex: 1;
   display: flex;
@@ -40,53 +87,81 @@ body {
   align-items: center;
 }
 
+/* ===============================
+   CARD
+   =============================== */
 .card {
   background: white;
-  width: 420px;
   padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  width: 380px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-/* Elements */
-.card h1 {
-  margin-bottom: 20px;
-  color: #203a43;
-}
-
-.upload-section {
-  margin-bottom: 20px;
-}
-
-.upload-section label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-}
-
-input[type="file"] {
-  width: 100%;
-}
-
-button {
+.card button {
   width: 100%;
   padding: 12px;
-  background: #2c5364;
-  color: white;
+  margin-top: 15px;
+  background: #173a47;
+  color: rgb(215, 215, 215);
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-button:hover {
-  background: #203a43;
+.card button:hover {
+  background: #0f2c36;
 }
 
+/* ===============================
+   RESULT BOX
+   =============================== */
 .result-box {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 10px;
-  background: #f1f7fa;
-  border-left: 5px solid #2c5364;
+  margin-top: 15px;
+  padding: 12px;
+  background: #cfcbcb;
+  border-left: 4px solid #173a47;
+}
+
+/* ===============================
+   FADE ANIMATIONS
+   =============================== */
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* ===============================
+   TRANSITION COVER (NO WHITE FLASH)
+   =============================== */
+#transitionCover {
+  position: fixed;
+  inset: 0;
+  background: #d2d8dd; /* neutral mid-tone */
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#transitionCover.active {
+  animation: coverFade 0.6s ease forwards;
+}
+
+@keyframes coverFade {
+  0%   { opacity: 0; }
+  35%  { opacity: 1; }
+  100% { opacity: 0; }
 }
