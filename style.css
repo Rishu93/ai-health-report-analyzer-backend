@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #eef6f9;
+}
+
+/* Layout */
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  padding: 40px 20px;
+}
+
+.sidebar h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.sidebar p {
+  opacity: 0.8;
+}
+
+/* Main */
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: white;
+  width: 420px;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+/* Elements */
+.card h1 {
+  margin-bottom: 20px;
+  color: #203a43;
+}
+
+.upload-section {
+  margin-bottom: 20px;
+}
+
+.upload-section label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+input[type="file"] {
+  width: 100%;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #2c5364;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #203a43;
+}
+
+.result-box {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #f1f7fa;
+  border-left: 5px solid #2c5364;
+}

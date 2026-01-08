@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Health Scanner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>🧠 HealthAI</h2>
+      <p>Smart AI Health Analysis</p>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="card">
+        <h1>AI Health Report</h1>
+
+        <div class="upload-section">
+          <label for="fileUpload">Upload Health File</label>
+          <input type="file" id="fileUpload" />
+        </div>
+
+        <button onclick="analyseData()">Analyse with AI</button>
+
+        <div class="result-box" id="result">
+          <p>Result will appear here...</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
